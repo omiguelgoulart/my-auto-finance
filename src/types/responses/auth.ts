@@ -6,3 +6,8 @@ export interface LoginResponse {
   email: string;
   token: string;
 }
+
+export interface LoginPayload {
+  email: string
+  senha: string
+}
