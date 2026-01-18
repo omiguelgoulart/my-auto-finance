@@ -38,3 +38,13 @@ export interface Movimentacao {
   conta?: Conta;
   categoria?: Categoria | null;
 }
+
+
+export interface MovimentacaoRecente {
+  id: UUID
+  descricao: string
+  data: ISODateString
+  categoriaNome: string
+  tipo: TipoMovimentacao
+  valor: number
+}
