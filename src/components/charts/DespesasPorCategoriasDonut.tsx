@@ -1,52 +1,52 @@
-'use client'
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 
 interface DespesaCategoria {
-  categoria: string
-  valor: number
-  [key: string]: string | number
+  categoria: string;
+  valor: number;
+  [key: string]: string | number;
 }
 
 interface DespesasPorCategoriaDonutProps {
-  dados: DespesaCategoria[]
-  titulo?: string
+  dados: DespesaCategoria[];
+  titulo?: string;
 }
 
 const COLORS = [
-  'oklch(0.65 0.15 250)', // blue
-  'oklch(0.7 0.15 145)',  // green
-  'oklch(0.75 0.15 80)',  // yellow
-  'oklch(0.65 0.15 30)',  // orange
-  'oklch(0.6 0.1 270)',   // muted purple
-]
+  "oklch(0.65 0.15 250)", // blue
+  "oklch(0.7 0.15 145)", // green
+  "oklch(0.75 0.15 80)", // yellow
+  "oklch(0.65 0.15 30)", // orange
+  "oklch(0.6 0.1 270)", // muted purple
+];
 
 export function DespesasPorCategoriaDonut({
   dados,
-  titulo = 'Despesas por Categoria',
+  titulo = "Despesas por Categoria",
 }: DespesasPorCategoriaDonutProps) {
   const processedData = (() => {
-    if (dados.length <= 5) return dados
+    if (dados.length <= 5) return dados;
 
-    const sorted = [...dados].sort((a, b) => b.valor - a.valor)
-    const top4 = sorted.slice(0, 4)
-    const others = sorted.slice(4)
-    const outrosTotal = others.reduce((sum, item) => sum + item.valor, 0)
+    const sorted = [...dados].sort((a, b) => b.valor - a.valor);
+    const top4 = sorted.slice(0, 4);
+    const others = sorted.slice(4);
+    const outrosTotal = others.reduce((sum, item) => sum + item.valor, 0);
 
-    return [...top4, { categoria: 'Outros', valor: outrosTotal }]
-  })()
+    return [...top4, { categoria: "Outros", valor: outrosTotal }];
+  })();
 
-  const total = processedData.reduce((sum, item) => sum + item.valor, 0)
+  const total = processedData.reduce((sum, item) => sum + item.valor, 0);
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
-    }).format(value)
-  }
+    }).format(value);
+  };
 
   const renderLegend = () => (
     <ul className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-1">
@@ -60,7 +60,7 @@ export function DespesasPorCategoriaDonut({
         </li>
       ))}
     </ul>
-  )
+  );
 
   return (
     <Card>
@@ -102,5 +102,5 @@ export function DespesasPorCategoriaDonut({
         {renderLegend()}
       </CardContent>
     </Card>
-  )
+  );
 }
