@@ -22,12 +22,14 @@ export interface Movimentacao {
   recorrenciaTipo?: TipoRecorrencia | null;
   recorrenciaIntervalo?: number | null;
   recorrenciaFim?: ISODateString | null;
+  
 
   competencia?: string | null; // "YYYY-MM"
   observacoes?: string | null;
 
   tipo: TipoMovimentacao;
   origem: OrigemLancamento;
+
 
   categoriaAutomatica: boolean;
   confiancaIA?: number | null; // 0..1

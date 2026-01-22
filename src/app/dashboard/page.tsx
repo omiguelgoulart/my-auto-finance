@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { AppShell } from "@/components/layout/AppShell";
 import { TopBar } from "@/components/layout/TopBar";
@@ -45,7 +45,6 @@ function getMesAtualYYYYMM() {
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
-
   const [competencia, setCompetencia] = useState<string>(getMesAtualYYYYMM());
 
   const [resumoMes, setResumoMes] = useState<ResumoMes | null>(null);
@@ -137,7 +136,7 @@ export default function DashboardPage() {
     return (
       <AppShell>
         <TopBar title="Dashboard" />
-        <div className="p-4 space-y-4">
+        <div className="space-y-4 p-4">
           <div className="flex items-center justify-between gap-3">
             <label className="text-sm text-muted-foreground" htmlFor="competencia">
               Competência
@@ -176,14 +175,18 @@ export default function DashboardPage() {
 
         <SummaryCards resumo={resumoMes} />
 
-        <ReceitaDespesaBarChart receita={resumoMes.receitas} despesa={resumoMes.despesas} />
+        <div className="w-full min-h-65">
+          <ReceitaDespesaBarChart receita={resumoMes.receitas} despesa={resumoMes.despesas} />
+        </div>
 
-        <DespesasPorCategoriaDonut
-          dados={despesasPorCategoria.map((item) => ({
-            categoria: item.categoriaNome,
-            valor: item.valor,
-          }))}
-        />
+        <div className="w-full min-h-80">
+          <DespesasPorCategoriaDonut
+            dados={despesasPorCategoria.map((item) => ({
+              categoria: item.categoriaNome,
+              valor: item.valor,
+            }))}
+          />
+        </div>
 
         <QuickActions />
 
