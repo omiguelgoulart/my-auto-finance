@@ -2,13 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { LayoutDashboard, ArrowLeftRight, Wallet, Settings, LogOut } from 'lucide-react'
+import { LayoutDashboard, ArrowLeftRight, Settings, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navItems = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { href: '/movimentacao', label: 'Movimentacoes', icon: ArrowLeftRight },
-  { href: '/contas', label: 'Contas', icon: Wallet },
   { href: '/configuracoes', label: 'Config', icon: Settings },
 ] as const
 

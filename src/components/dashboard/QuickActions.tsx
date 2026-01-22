@@ -6,7 +6,7 @@ export function QuickActions() {
   const actions = [
     {
       label: 'Nova',
-      href: '/movimentacoes',
+      href: '/movimentacao',
       icon: Plus,
     },
     {
